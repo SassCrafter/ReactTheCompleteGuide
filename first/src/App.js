@@ -6,7 +6,28 @@ import NewExpense from './components/NewExpense/NewExpense'
 
 function App() {
   const [expenses, setExpenses] = useState([]);
-  // const expenses = [
+  
+
+  const addExpenseHandler = (expenseObj) => {
+    console.log(expenseObj);
+    setExpenses((prevState) => (
+      [...prevState,
+            expenseObj]
+    ))
+  }
+
+  return (
+    <div className="App">
+      <NewExpense onNewExpenseAdd={addExpenseHandler} />
+      <Expenses expenses={expenses} />
+    </div>
+  );
+}
+
+export default App;
+
+
+// const expenses = [
   //   {
   //     id: 'e1',
   //     title: 'Toilet Paper',
@@ -27,21 +48,3 @@ function App() {
   //     date: new Date(2021, 5, 12),
   //   },
   // ];
-
-  const addExpenseHandler = (expenseObj) => {
-    console.log(expenseObj);
-    setExpenses((prevState) => (
-      [...prevState,
-            expenseObj]
-    ))
-  }
-
-  return (
-    <div className="App">
-      <NewExpense onNewExpenseAdd={addExpenseHandler} />
-      <Expenses expenses={expenses} />
-    </div>
-  );
-}
-
-export default App;

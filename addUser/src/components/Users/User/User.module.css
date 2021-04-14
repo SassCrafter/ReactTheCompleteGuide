@@ -1,0 +1,13 @@
+.User {
+	padding: 10px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+
+.User:not(:last-child) {
+	margin-bottom: 10px;
+}
+
+.Text {
+	margin: 0;
+}
