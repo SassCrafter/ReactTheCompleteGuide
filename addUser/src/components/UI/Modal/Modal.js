@@ -1,20 +1,34 @@
 import React from "react";
+import ReactDom from "react-dom";
 import classes from "./Modal.module.css";
-import BackDrop from "../BackDrop/Backdrop";
+import Button from "../Button/Button";
 
-function Modal({ children, open, errorText, description }) {
+function Modal({ open, errorText, description, onCloseModal }) {
 	return (
-		<>
-			<BackDrop open />
+		<div
+			className={`${classes.Wrapper} ${open && classes.Open}`}
+			onClick={onCloseModal}
+		>
 			<div className={classes.Modal}>
 				<div className={classes.Header}>
 					<h3>{errorText}</h3>
 				</div>
-				<p>{description}</p>
-				<button className={classes.Button}>Okay</button>
+				<div className={classes.Body}>
+					<p>{description}</p>
+					<Button onClick={onCloseModal} className={classes.Submit}>
+						Okay
+					</Button>
+				</div>
 			</div>
-		</>
+		</div>
 	);
 }
 
-export default Modal;
+const ErrorModal = (props) => {
+	return ReactDom.createPortal(
+		<Modal {...props} />,
+		document.getElementById("overlay")
+	);
+};
+
+export default ErrorModal;

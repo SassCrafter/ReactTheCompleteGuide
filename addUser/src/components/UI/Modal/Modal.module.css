@@ -1,11 +1,51 @@
+.Wrapper {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	transform: translateY(100%);
+	visibility: hidden;
+	pointer-events: none;
+	opacity: 0;
+	transition: transform 200ms ease-in-out, opacity 200ms linear;
+}
+
+.Open {
+	transform: translateY(0);
+	visibility: visible;
+	pointer-events: initial;
+	opacity: 1;
+}
+
 .Modal {
 	width: 90%;
-	max-width: 40rem;
-	background-color: white;
-	padding: 20px;
+	max-width: 30rem;
 	border-radius: 5px;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	overflow: hidden;
+}
+
+.Header {
+	width: 100%;
+	padding: 20px;
+	background-color: #560bad;
+	color: white;
+}
+
+.Header h3 {
+	margin: 0;
+}
+
+.Body {
+	padding: 20px;
+	background-color: white;
+}
+
+.Submit {
+	margin-left: auto;
+	display: block;
 }
