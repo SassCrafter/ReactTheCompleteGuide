@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./MealItem.module.css";
 import MealItemForm from "../MealItemForm/MealItemForm";
+import CartContext from "../../../store/cart-context";
 
-function MealItem({ name, description, price }) {
+function MealItem({ id, name, description, price }) {
+	const { addItem } = useContext(CartContext);
+
 	const formattedPrice = `$${price.toFixed(2)}`;
+
+	const addItemToCartHandler = (amount) => {
+		addItem({
+			id: Math.random(),
+			name,
+			amount,
+			price,
+		});
+	};
+
 	return (
 		<li className={classes.meal}>
 			<div>
@@ -13,15 +26,8 @@ function MealItem({ name, description, price }) {
 			</div>
 			<div>
 				<MealItemForm
-					label="Amount"
-					input={{
-						id: name + price,
-						type: "number",
-						min: "1",
-						max: "5",
-						step: "1",
-						defaultValue: "1",
-					}}
+					onAddToCart={addItemToCartHandler}
+					inputId={name + price}
 				/>
 			</div>
 		</li>
