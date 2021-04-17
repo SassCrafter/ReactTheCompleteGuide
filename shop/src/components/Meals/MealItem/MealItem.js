@@ -10,7 +10,7 @@ function MealItem({ id, name, description, price }) {
 
 	const addItemToCartHandler = (amount) => {
 		addItem({
-			id: Math.random(),
+			id,
 			name,
 			amount,
 			price,
