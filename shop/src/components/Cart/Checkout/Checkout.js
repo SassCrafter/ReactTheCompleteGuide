@@ -1,6 +1,10 @@
 import React, { useRef } from "react";
 import classes from "./Checkout.module.css";
 
+const isEmpty = (value) => value.trim === "";
+
+const lessThanFive = (value) => value.trim.length < 5;
+
 function Checkout({ cancelHandler }) {
 	const nameRef = useRef();
 	const streetRef = useRef();
@@ -13,6 +17,17 @@ function Checkout({ cancelHandler }) {
 		const enteredStreet = streetRef.current.value;
 		const enteredPostal = postalRef.current.value;
 		const enteredCity = cityRef.current.value;
+
+		const enteredNameIsValid = !isEmpty(enteredName);
+		const enteredStreetIsValid = !isEmpty(enteredStreet);
+		const enteredCityIsValid = !isEmpty(enteredCity);
+		const enteredPostalIsValid = !lessThanFive(enteredPostal);
+
+		const formIsValid =
+			enteredNameIsValid &&
+			enteredStreetIsValid &&
+			enteredCityIsValid &&
+			enteredPostalIsValid;
 	};
 
 	return (
