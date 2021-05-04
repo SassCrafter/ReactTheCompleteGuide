@@ -1,16 +1,12 @@
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 
-const counterReducer = (state = { counter: 0 }, action) => {
-	if (action.type === "increment") {
-		console.log("Store increment");
-		return { counter: state.counter + 1 };
-	}
-	if (action.type === "decrement") {
-		return { counter: state.counter - 1 };
-	}
-	return state;
-};
+import counterSlice from "./counter";
+import authSlice from "./auth";
 
-const store = createStore(counterReducer);
+const store = configureStore({
+	reducer: { counter: counterSlice.reducer, auth: authSlice.reducer },
+});
 
+export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
 export default store;
