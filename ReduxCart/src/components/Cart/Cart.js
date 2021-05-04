@@ -6,10 +6,8 @@ import { cartActions } from "../../store";
 
 const Cart = (props) => {
   const cartItems = useSelector((state) => state.cart.items);
-  const isCartOpen = useSelector((state) => state.uiCart.isOpen);
+  const isCartOpen = useSelector((state) => state.ui.isCartOpen);
   const dispatch = useDispatch();
-
-  console.log(isCartOpen);
 
   const onAddItemHandler = (id) => {
     dispatch(cartActions.addItem(id));
