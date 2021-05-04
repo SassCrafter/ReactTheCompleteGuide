@@ -21,3 +21,11 @@
   margin: 2rem 0;
   font-weight: bold;
 }
+
+.controls {
+  margin-bottom: 2rem;
+}
+
+.controls button {
+  margin: 0 1rem;
+}
